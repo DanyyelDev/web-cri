@@ -1,0 +1,55 @@
+<article class="pc-card" [class.list-mode]="mode === 'list'" (click)="verVideo.emit(predica)">
+
+  <!-- Thumbnail -->
+  <div class="pc-thumb">
+    <img [src]="predica.thumbnail" [alt]="predica.titulo" loading="lazy">
+    <div class="pc-overlay">
+      <div class="pc-play">
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+    <span class="pc-cat">{{ predica.categoria }}</span>
+    @if (predica.duracion) {
+      <span class="pc-dur">
+        <i class="fas fa-clock"></i> {{ predica.duracion }}
+      </span>
+    }
+  </div>
+
+  <!-- Cuerpo -->
+  <div class="pc-body">
+    <div class="pc-meta">
+      <span class="pc-date">
+        <i class="fas fa-calendar-alt"></i>
+        {{ formatDate(predica.fecha) }}
+      </span>
+      <span class="pc-pastor">
+        <i class="fas fa-microphone"></i>
+        {{ predica.pastor }}
+      </span>
+    </div>
+
+    <h3 class="pc-titulo">{{ predica.titulo }}</h3>
+
+    <p class="pc-desc">{{ predica.descripcion }}</p>
+
+    @if (predica.versiculo) {
+      <div class="pc-versiculo">
+        <i class="fas fa-book-open"></i>
+        {{ predica.versiculo }}
+      </div>
+    }
+
+    <div class="pc-footer">
+      <div class="pc-tags">
+        @for (tag of predica.tags?.slice(0, 3); track tag) {
+          <span class="pc-tag">{{ tag }}</span>
+        }
+      </div>
+      <button class="pc-btn" (click)="onVerClick($event)">
+        <i class="fab fa-youtube"></i> Ver
+      </button>
+    </div>
+  </div>
+
+</article>

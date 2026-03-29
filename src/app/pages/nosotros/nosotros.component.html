@@ -1,0 +1,145 @@
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a routerLink="/">Inicio</a>
+    <span>/</span>
+    <span>Nosotros</span>
+  </div>
+  <h1>Nosotros</h1>
+  <p>Conoce quiénes somos, nuestra misión y visión</p>
+</div>
+
+<!-- MISIÓN Y VISIÓN -->
+<section class="section mv-section">
+  <div class="container">
+    <div class="mv-grid">
+
+      <div class="mv-card mission">
+        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+        <h2>Nuestra Misión</h2>
+        <p>
+          Proclamar el evangelio de Jesucristo, discipular creyentes en la fe y servir
+          a la comunidad con amor, llevando esperanza y transformación a cada vida
+          que Dios ponga en nuestro camino.
+        </p>
+      </div>
+
+      <div class="mv-card vision">
+        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+        <h2>Nuestra Visión</h2>
+        <p>
+          Ser una iglesia que impacte familias, ciudades y naciones con el mensaje
+          del Reino de Dios, formando discípulos comprometidos que transformen su
+          entorno para la gloria de Cristo.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section historia-section">
+  <div class="container">
+    <div class="historia-grid">
+
+      <div class="historia-text">
+        <span class="section-label">Nuestra Historia</span>
+        <h2 class="section-title">Una historia de fe</h2>
+        <p>
+          La Iglesia Cristiana C.R.I nació del corazón de un grupo de creyentes
+          comprometidos con la Palabra de Dios y el servicio a la comunidad.
+          Con fe y determinación, lo que comenzó como una pequeña reunión familiar
+          ha crecido hasta convertirse en una comunidad vibrante.
+        </p>
+        <p>
+          A lo largo de los años, hemos visto la fidelidad de Dios en cada paso.
+          Familias restauradas, vidas transformadas y comunidades impactadas son
+          el testimonio viviente de su gracia y misericordia.
+        </p>
+        <p>
+          Hoy, con presencia en YouTube y en nuestra comunidad local, continuamos
+          fielmente con la misión de llevar el evangelio a toda persona que lo necesite.
+        </p>
+        <a routerLink="/predicas" class="btn-primary" style="margin-top:1.5rem;display:inline-flex">
+          <i class="fas fa-play"></i> Ver nuestras prédicas
+        </a>
+      </div>
+
+      <div class="historia-deco">
+        <div class="deco-box box1"><i class="fas fa-cross"></i><span>Fe</span></div>
+        <div class="deco-box box2"><i class="fas fa-heart"></i><span>Amor</span></div>
+        <div class="deco-box box3"><i class="fas fa-hands-helping"></i><span>Servicio</span></div>
+        <div class="deco-box box4"><i class="fas fa-globe"></i><span>Misión</span></div>
+        <div class="deco-center">
+          <div class="center-icon"><i class="fas fa-bible"></i></div>
+          <span>Iglesia Cristiana</span>
+          <strong>C.R.I</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="section valores-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Lo que creemos</span>
+      <h2 class="section-title">Nuestros Valores</h2>
+    </div>
+    <div class="valores-grid">
+      @for (v of valores; track v.titulo) {
+        <div class="valor-item">
+          <div class="valor-num">{{ v.num }}</div>
+          <div class="valor-content">
+            <h3>{{ v.titulo }}</h3>
+            <p>{{ v.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- MINISTERIOS -->
+<section class="section ministerios-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Cómo servimos</span>
+      <h2 class="section-title">Nuestros Ministerios</h2>
+      <p class="section-subtitle" style="margin:0 auto">
+        Diferentes áreas de servicio para que cada persona encuentre su lugar en la obra de Dios
+      </p>
+    </div>
+    <div class="min-grid">
+      @for (m of ministerios; track m.nombre) {
+        <div class="min-card">
+          <div class="min-icon"><i class="fas {{ m.icon }}"></i></div>
+          <h3>{{ m.nombre }}</h3>
+          <p>{{ m.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>¿Quieres ser parte de nuestra familia?</h2>
+      <p>Te invitamos a unirte a nuestra comunidad y crecer juntos en la fe.</p>
+      <div class="cta-btns">
+        <a routerLink="/contacto" class="btn-primary">
+          <i class="fas fa-envelope"></i> Contáctanos
+        </a>
+        <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
+           target="_blank" rel="noopener" class="btn-outline">
+          <i class="fab fa-youtube"></i> Nuestro YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

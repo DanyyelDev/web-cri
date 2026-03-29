@@ -1,0 +1,113 @@
+<footer class="footer">
+
+  <!-- Top wave -->
+  <div class="footer-wave">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,40 C300,80 900,0 1200,40 L1200,80 L0,80 Z" fill="#0d1f33"/>
+    </svg>
+  </div>
+
+  <div class="footer-body">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Columna 1: Logo + descripción -->
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-icon"><i class="fas fa-cross"></i></div>
+            <div class="logo-text">
+              <span class="logo-main">Iglesia Cristiana</span>
+              <span class="logo-sub">C.R.I</span>
+            </div>
+          </div>
+          <p class="brand-desc">
+            Comunidad de fe comprometida con proclamar el evangelio de Jesucristo,
+            discipular creyentes y transformar vidas para la gloria de Dios.
+          </p>
+          <div class="social-links">
+            <a href="https://www.youtube.com/@IglesiaCristianaC.R.I" target="_blank" rel="noopener" class="social-link yt" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-link fb" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link ig" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link wa" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna 2: Navegación -->
+        <div class="footer-col">
+          <h4 class="footer-title">Navegación</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/">Inicio</a></li>
+            <li><a routerLink="/predicas">Prédicas</a></li>
+            <li><a routerLink="/nosotros">Nosotros</a></li>
+            <li><a routerLink="/contacto">Contacto</a></li>
+            <li>
+              <a href="https://www.youtube.com/@IglesiaCristianaC.R.I" target="_blank" rel="noopener">
+                Canal YouTube <i class="fas fa-external-link-alt" style="font-size:0.7rem"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Prédicas categorías -->
+        <div class="footer-col">
+          <h4 class="footer-title">Prédicas</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Domingo'}">Sermones de Domingo</a></li>
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Miércoles'}">Miércoles de Palabra</a></li>
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Jóvenes'}">Jóvenes</a></li>
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Familias'}">Familias</a></li>
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Ayuno'}">Ayuno y Oración</a></li>
+            <li><a routerLink="/predicas" [queryParams]="{cat:'Especial'}">Mensajes Especiales</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Horarios -->
+        <div class="footer-col">
+          <h4 class="footer-title">Horarios de Culto</h4>
+          <ul class="footer-schedule">
+            <li>
+              <div class="schedule-item">
+                <span class="day">Domingo</span>
+                <span class="time">9:00 AM · 11:00 AM</span>
+              </div>
+            </li>
+            <li>
+              <div class="schedule-item">
+                <span class="day">Miércoles</span>
+                <span class="time">7:00 PM</span>
+              </div>
+            </li>
+            <li>
+              <div class="schedule-item">
+                <span class="day">Jóvenes · Viernes</span>
+                <span class="time">7:00 PM</span>
+              </div>
+            </li>
+          </ul>
+          <div class="footer-verse">
+            <i class="fas fa-quote-left"></i>
+            <p>"Porque donde están dos o tres reunidos en mi nombre, allí estoy yo en medio de ellos." — Mt 18:20</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {{ year }} Iglesia Cristiana C.R.I. Todos los derechos reservados.</p>
+      <p>Hecho con <i class="fas fa-heart" style="color:#e74c3c"></i> para la gloria de Dios</p>
+    </div>
+  </div>
+
+</footer>

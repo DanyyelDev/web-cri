@@ -1,0 +1,199 @@
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Inicio</a>
+    <span>/</span>
+    <span>Prédicas</span>
+  </div>
+  <h1>Prédicas</h1>
+  <p>Mensajes que edifican, transforman y acercan a Dios</p>
+</div>
+
+<!-- ===== BARRA DE FILTROS ===== -->
+<section class="filtros-bar">
+  <div class="container filtros-container">
+
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input
+        type="text"
+        placeholder="Buscar por título o pastor..."
+        [value]="busqueda()"
+        (input)="onBusqueda($any($event.target).value)"
+      />
+      @if (busqueda()) {
+        <button class="clear-search" (click)="onBusqueda('')" aria-label="Borrar búsqueda">
+          <i class="fas fa-times"></i>
+        </button>
+      }
+    </div>
+
+    <div class="vista-toggle">
+      <button [class.active]="!vistaLista()" (click)="vistaLista.set(false)" title="Vista cuadrícula">
+        <i class="fas fa-th"></i>
+      </button>
+      <button [class.active]="vistaLista()" (click)="vistaLista.set(true)" title="Vista lista">
+        <i class="fas fa-list"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="cat-pills">
+      <button class="pill" [class.active]="catActiva() === 'Todas'" (click)="setCat('Todas')">
+        <i class="fas fa-th-large"></i> Todas
+      </button>
+      @for (cat of categorias; track cat) {
+        <button class="pill" [class.active]="catActiva() === cat" (click)="setCat(cat)">
+          <i class="fas {{ catIconos[cat] || 'fa-play' }}"></i>
+          {{ cat }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTADOS ===== -->
+<section class="predicas-main">
+  <div class="container">
+
+    @if (predicasService.cargando()) {
+      <div class="loading-state">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+        </div>
+        <p>Cargando prédicas desde YouTube...</p>
+      </div>
+      <div class="predicas-container">
+        @for (s of skeletons; track $index) {
+          <div class="skeleton-card">
+            <div class="sk-thumb"></div>
+            <div class="sk-body">
+              <div class="sk-line sk-title"></div>
+              <div class="sk-line sk-sub"></div>
+              <div class="sk-line sk-meta"></div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else if (predicasService.error()) {
+      <div class="error-state">
+        <div class="error-icon"><i class="fab fa-youtube"></i></div>
+        <h3>No se pudieron cargar las prédicas</h3>
+        <p>Verifica que la API Key de YouTube esté configurada en <code>environment.ts</code></p>
+        <button class="btn-primary" (click)="predicasService.cargar()">
+          <i class="fas fa-redo"></i> Reintentar
+        </button>
+        <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
+           target="_blank" rel="noopener" class="btn-outline">
+          <i class="fab fa-youtube"></i> Ver en YouTube
+        </a>
+      </div>
+    } @else {
+
+      <div class="results-row">
+        <p class="results-count">
+          <strong>{{ filtradas().length }}</strong>
+          {{ filtradas().length === 1 ? 'prédica' : 'prédicas' }}
+          @if (catActiva() !== 'Todas') {
+            en <span class="res-cat">{{ catActiva() }}</span>
+          }
+          @if (busqueda()) {
+            para <em>"{{ busqueda() }}"</em>
+          }
+        </p>
+        @if (catActiva() !== 'Todas' || busqueda()) {
+          <button class="limpiar-btn" (click)="limpiar()">
+            <i class="fas fa-times-circle"></i> Limpiar filtros
+          </button>
+        }
+      </div>
+
+      @if (filtradas().length > 0) {
+        <div class="predicas-container" [class.lista]="vistaLista()">
+          @for (p of filtradas(); track p.id) {
+            <app-predica-card
+              [predica]="p"
+              [mode]="vistaLista() ? 'list' : 'grid'"
+              (verVideo)="abrirModal($event)">
+            </app-predica-card>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <div class="empty-icon"><i class="fas fa-search"></i></div>
+          <h3>No encontramos prédicas</h3>
+          <p>Intenta con otro término de búsqueda o cambia la categoría</p>
+          <button class="btn-primary" (click)="limpiar()">
+            <i class="fas fa-redo"></i> Ver todas las prédicas
+          </button>
+        </div>
+      }
+
+    }
+
+  </div>
+</section>
+
+<!-- ===== CTA YOUTUBE ===== -->
+<section class="yt-strip">
+  <div class="container">
+    <div class="yt-strip-inner">
+      <div class="yt-strip-icon"><i class="fab fa-youtube"></i></div>
+      <div class="yt-strip-text">
+        <h3>¿Quieres más contenido?</h3>
+        <p>Visita nuestro canal de YouTube y suscríbete para recibir nuevas prédicas cada semana.</p>
+      </div>
+      <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
+         target="_blank" rel="noopener" class="yt-strip-btn">
+        <i class="fab fa-youtube"></i> Ir al Canal
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODAL ===== -->
+@if (modalAbierto() && predicaModal()) {
+  <div class="modal-backdrop" (click)="cerrarModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+
+      <button class="modal-close" (click)="cerrarModal()">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="modal-head">
+        <span class="modal-cat-badge">{{ predicaModal()!.categoria }}</span>
+        <h2>{{ predicaModal()!.titulo }}</h2>
+        <div class="modal-meta">
+          <span><i class="fas fa-microphone"></i> {{ predicaModal()!.pastor }}</span>
+          <span><i class="fas fa-calendar"></i> {{ formatDate(predicaModal()!.fecha) }}</span>
+        </div>
+      </div>
+
+      <div class="modal-media">
+        <img [src]="predicaModal()!.thumbnail" [alt]="predicaModal()!.titulo">
+        <div class="modal-media-overlay">
+          <a [href]="getWatchUrl(predicaModal()!.videoId)"
+             target="_blank" rel="noopener"
+             class="modal-yt-btn">
+            <i class="fab fa-youtube"></i>
+            Ver en YouTube
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-info">
+        <p class="modal-desc">{{ predicaModal()!.descripcion }}</p>
+
+        <a [href]="getWatchUrl(predicaModal()!.videoId)"
+           target="_blank" rel="noopener"
+           class="modal-full-btn">
+          <i class="fab fa-youtube"></i>
+          Abrir prédica completa en YouTube
+        </a>
+      </div>
+
+    </div>
+  </div>
+}

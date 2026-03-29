@@ -1,0 +1,158 @@
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a routerLink="/">Inicio</a>
+    <span>/</span>
+    <span>Contacto</span>
+  </div>
+  <h1>Contáctanos</h1>
+  <p>Estamos aquí para servirte. ¡Escríbenos!</p>
+</div>
+
+<section class="contacto-section">
+  <div class="container">
+    <div class="contacto-grid">
+
+      <!-- ===== INFO COL ===== -->
+      <aside class="info-col">
+
+        <!-- Ubicación -->
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="card-body">
+            <h3>Ubicación</h3>
+            <p>Iglesia Cristiana C.R.I<br>Colombia</p>
+          </div>
+        </div>
+
+        <!-- Horarios -->
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="card-body">
+            <h3>Horarios de Culto</h3>
+            <ul class="horarios-list">
+              @for (h of horarios; track h.dia) {
+                <li>
+                  <div class="horario-icon"><i class="fas {{ h.icon }}"></i></div>
+                  <div>
+                    <strong>{{ h.dia }}</strong>
+                    <span>{{ h.hora }}</span>
+                  </div>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Redes -->
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-share-alt"></i>
+          </div>
+          <div class="card-body">
+            <h3>Síguenos</h3>
+            <div class="redes-grid">
+              @for (r of redes; track r.label) {
+                <a [href]="r.url" target="_blank" rel="noopener"
+                   class="red-btn"
+                   [style.--rd-color]="r.color">
+                  <i [class]="r.icon"></i>
+                  {{ r.label }}
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- YouTube -->
+        <div class="info-card yt-card">
+          <div class="yt-inner">
+            <div class="yt-icon">
+              <i class="fab fa-youtube"></i>
+            </div>
+            <div>
+              <h4>Canal de YouTube</h4>
+              <p>Suscríbete para recibir las últimas prédicas</p>
+              <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
+                 target="_blank" rel="noopener" class="yt-link">
+                <i class="fas fa-arrow-up-right-from-square"></i>
+                &#64;IglesiaCristianaC.R.I
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ===== FORM COL ===== -->
+      <div class="form-col">
+        <div class="form-wrapper">
+
+          <div class="form-header">
+            <span class="form-badge">
+              <i class="fas fa-envelope"></i> Formulario de Contacto
+            </span>
+            <h2>Envíanos un mensaje</h2>
+            <p>Completa el formulario y te responderemos a la brevedad.</p>
+          </div>
+
+          @if (enviado) {
+            <div class="success-msg">
+              <div class="success-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div>
+                <strong>¡Mensaje enviado exitosamente!</strong>
+                <p>Gracias por contactarnos. Te responderemos pronto. ¡Que Dios te bendiga!</p>
+              </div>
+            </div>
+          }
+
+          <div class="form-fields">
+
+            <div class="field-row">
+              <div class="floating-field">
+                <input id="nombre" type="text" [(ngModel)]="form.nombre"
+                       placeholder=" " required autocomplete="name">
+                <label for="nombre">Nombre completo <span>*</span></label>
+              </div>
+              <div class="floating-field">
+                <input id="email" type="email" [(ngModel)]="form.email"
+                       placeholder=" " required autocomplete="email">
+                <label for="email">Correo electrónico <span>*</span></label>
+              </div>
+            </div>
+
+            <div class="floating-field">
+              <input id="asunto" type="text" [(ngModel)]="form.asunto"
+                     placeholder=" ">
+              <label for="asunto">Asunto</label>
+            </div>
+
+            <div class="floating-field textarea-field">
+              <textarea id="mensaje" [(ngModel)]="form.mensaje"
+                        placeholder=" " rows="5" required></textarea>
+              <label for="mensaje">Mensaje <span>*</span></label>
+            </div>
+
+            <button class="submit-btn" (click)="enviar()" [disabled]="enviando">
+              @if (enviando) {
+                <span class="btn-spinner"></span>
+                Enviando...
+              } @else {
+                <i class="fas fa-paper-plane"></i>
+                Enviar Mensaje
+              }
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
