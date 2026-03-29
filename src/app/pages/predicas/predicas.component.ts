@@ -7,11 +7,10 @@ import { Predica, CategoriaPrediaca } from '../../models/predica.model';
 import { PredicaCardComponent } from '../../components/predica-card/predica-card.component';
 
 @Component({
-  selector: 'app-predicas',
-  standalone: true,
-  imports: [CommonModule, FormsModule, PredicaCardComponent],
-  templateUrl: './predicas.component.html',
-  styleUrls: ['./predicas.component.scss']
+    selector: 'app-predicas',
+    imports: [CommonModule, FormsModule, PredicaCardComponent],
+    templateUrl: './predicas.component.html',
+    styleUrls: ['./predicas.component.scss']
 })
 export class PredicasComponent implements OnInit {
 

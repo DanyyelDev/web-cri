@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-nosotros',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './nosotros.component.html',
-  styleUrls: ['./nosotros.component.scss']
+    selector: 'app-nosotros',
+    imports: [CommonModule, RouterLink],
+    templateUrl: './nosotros.component.html',
+    styleUrls: ['./nosotros.component.scss']
 })
 export class NosotrosComponent {
 

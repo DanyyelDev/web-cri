@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-contacto',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './contacto.component.html',
-  styleUrls: ['./contacto.component.scss']
+    selector: 'app-contacto',
+    imports: [CommonModule, FormsModule, RouterLink],
+    templateUrl: './contacto.component.html',
+    styleUrls: ['./contacto.component.scss']
 })
 export class ContactoComponent {
   form = { nombre: '', email: '', asunto: '', mensaje: '' };

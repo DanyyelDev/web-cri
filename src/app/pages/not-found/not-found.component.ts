@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-not-found',
-  standalone: true,
-  imports: [RouterLink],
-  template: `
+    selector: 'app-not-found',
+    imports: [RouterLink],
+    template: `
     <div class="not-found">
       <div class="nf-icon"><i class="fas fa-cross"></i></div>
       <h1>404</h1>
@@ -21,7 +20,7 @@ import { RouterLink } from '@angular/router';
       </div>
     </div>
   `,
-  styles: [`
+    styles: [`
     .not-found {
       min-height: calc(100vh - 80px);
       display: flex;
