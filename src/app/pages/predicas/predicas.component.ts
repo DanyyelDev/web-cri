@@ -1,18 +1,19 @@
 import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PredicasService } from '../../services/predicas.service';
 import { Predica, CategoriaPrediaca } from '../../models/predica.model';
-import { PredicaCardComponent } from '../../components/predica-card/predica-card.component';
 
 @Component({
     selector: 'app-predicas',
-    imports: [CommonModule, FormsModule, PredicaCardComponent],
+    imports: [CommonModule, FormsModule, RouterLink],
     templateUrl: './predicas.component.html',
     styleUrls: ['./predicas.component.scss']
 })
 export class PredicasComponent implements OnInit {
+
+  String = String;
 
   categorias: CategoriaPrediaca[] = [];
 
@@ -23,7 +24,6 @@ export class PredicasComponent implements OnInit {
   modalAbierto = signal<boolean>(false);
   predicaModal = signal<Predica | null>(null);
 
-  /** Lista filtrada — se recalcula automáticamente cuando cambian señales */
   filtradas = computed<Predica[]>(() => {
     let res = this.predicasService.predicas();
 
@@ -82,18 +82,9 @@ export class PredicasComponent implements OnInit {
 
   formatDate(d: string): string {
     return new Date(d).toLocaleDateString('es-CO', {
-      day: 'numeric', month: 'long', year: 'numeric'
+      day: 'numeric', month: 'short', year: 'numeric'
     });
   }
-
-  catIconos: Record<string, string> = {
-    'Palabra de Poder':       'fa-bible',
-    'Conferencia Financiera': 'fa-coins',
-    'Devocionales':           'fa-pray',
-    'Escuela de Diaconado':   'fa-church',
-    'Escuela de Teología':    'fa-graduation-cap',
-    'Reunión de Oración':     'fa-hands',
-  };
 
   skeletons = Array(6);
 }

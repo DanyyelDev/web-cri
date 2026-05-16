@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { YoutubeService } from './youtube.service';
 import { Predica, CategoriaPrediaca } from '../models/predica.model';
 
@@ -8,6 +9,10 @@ export class PredicasService {
   private readonly _predicas  = signal<Predica[]>([]);
   private readonly _cargando  = signal<boolean>(false);
   private readonly _error     = signal<boolean>(false);
+
+  // Subject para que los componentes puedan suscribirse
+  private readonly _predicas$ = new Subject<Predica[]>();
+  readonly predicas$: Observable<Predica[]> = this._predicas$.asObservable();
 
   readonly predicas  = this._predicas.asReadonly();
   readonly cargando  = this._cargando.asReadonly();
@@ -22,8 +27,15 @@ export class PredicasService {
     this._error.set(false);
 
     this.youtube.fetchAll(20).subscribe({
-      next:  list  => { this._predicas.set(list); this._cargando.set(false); },
-      error: ()    => { this._error.set(true);    this._cargando.set(false); },
+      next: list => {
+        this._predicas.set(list);
+        this._predicas$.next(list);   // notificar suscriptores
+        this._cargando.set(false);
+      },
+      error: () => {
+        this._error.set(true);
+        this._cargando.set(false);
+      },
     });
   }
 
@@ -31,14 +43,9 @@ export class PredicasService {
     return this.youtube.playlists.map(p => p.categoria);
   }
 
-  getAll(): Predica[] {
-    return this._predicas();
-  }
+  getAll(): Predica[] { return this._predicas(); }
 
-  /** Devuelve las n prédicas más recientes (ya ordenadas por fecha) */
-  getRecientes(n = 4): Predica[] {
-    return this._predicas().slice(0, n);
-  }
+  getRecientes(n = 4): Predica[] { return this._predicas().slice(0, n); }
 
   getYoutubeEmbedUrl(videoId: string): string {
     return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;

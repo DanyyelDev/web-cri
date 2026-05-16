@@ -1,461 +1,286 @@
-// =============================================
-//  CONTACTO — Tema Azul & Blanco Premium
-// =============================================
+// ===== CONTACTO — clases exactas del diseño Sanctuario =====
 
-$blue-deep:    #1e3a8a;
-$blue-royal:   #2563eb;
-$blue-mid:     #3b82f6;
-$blue-light:   #93c5fd;
-$blue-pale:    #eff6ff;
-$blue-mist:    #f0f7ff;
-$white:        #ffffff;
-$text-dark:    #0f172a;
-$text-medium:  #334155;
-$text-light:   #64748b;
-$border:       #dbeafe;
-$border-soft:  #e2e8f0;
-$shadow-blue:  rgba(37, 99, 235, 0.12);
-$shadow-deep:  rgba(30, 58, 138, 0.08);
-
-// ── Sección principal ──────────────────────────────────
-.contacto-section {
-  padding: 5rem 0 6.5rem;
-  background: linear-gradient(180deg, #f8faff 0%, #eef4ff 100%);
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $blue-deep, $blue-royal, $blue-mid);
-  }
+// ── Page head ──
+.page-head {
+  padding: 140px 56px 100px;
+  max-width: 1320px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--line);
 }
 
-// ── Layout ────────────────────────────────────────────
-.contacto-grid {
+.crumb {
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 30px;
+}
+
+.crumb a { color: var(--ink-mute); transition: color .2s; }
+.crumb a:hover { color: var(--accent); }
+.crumb .sep { margin: 0 12px; color: var(--line); }
+
+.page-head h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 120px;
+  line-height: .9;
+  letter-spacing: -.025em;
+  margin: 0 0 30px;
+  color: var(--ink);
+}
+
+.page-head h1 em { font-style: italic; color: var(--accent); }
+
+.page-head .lede {
+  font-size: 18px;
+  color: var(--ink-dim);
+  max-width: 560px;
+  line-height: 1.55;
+}
+
+// ── ct-wrap ──
+.ct-wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 100px 56px 140px;
   display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
   align-items: start;
-
-  @media (max-width: 1024px) { grid-template-columns: 1fr; }
 }
 
-// ── INFO COLUMN ───────────────────────────────────────
-.info-col {
+// ── Info lateral ──
+.ct-info {
+  position: sticky;
+  top: 100px;
+}
+
+.ct-info .block {
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ct-info .block:first-child { padding-top: 0; }
+.ct-info .block:last-child  { border-bottom: 0; }
+
+.ct-info .lbl {
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+}
+
+.ct-info .val {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.ct-info .sub {
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+// Horarios
+.schedule-mini .row {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
 }
 
-.info-card {
-  background: $white;
-  border-radius: 16px;
-  padding: 1.4rem;
-  box-shadow: 0 1px 3px $shadow-deep, 0 4px 18px $shadow-blue;
-  border: 1px solid $border;
+.schedule-mini .row:last-child { border-bottom: 0; }
+
+.schedule-mini .d { color: var(--ink); font-weight: 500; }
+.schedule-mini .t { color: var(--ink-dim); font-feature-settings: "tnum"; }
+
+// Redes sociales
+.soc {
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 28px rgba(37, 99, 235, 0.18);
-  }
+  gap: 10px;
+  margin-top: 14px;
 }
 
-.card-icon {
-  width: 46px;
-  height: 46px;
-  background: linear-gradient(135deg, $blue-deep, $blue-royal);
-  border-radius: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-
-  i {
-    font-size: 1rem;
-    color: $white;
-  }
+.ft-soc {
+  width: 38px; height: 38px;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--ink-dim);
+  transition: all .25s;
+  font-size: 0.85rem;
+  text-decoration: none;
 }
 
-.card-body {
-  flex: 1;
+.ft-soc:hover { border-color: var(--accent); color: var(--accent); }
 
-  h3 {
-    font-family: var(--font-body);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: $blue-royal;
-    margin-bottom: 0.55rem;
-  }
-
-  p {
-    font-size: 0.88rem;
-    color: $text-medium;
-    line-height: 1.75;
-  }
+// ── Formulario ──
+.ct-form {
+  border: 1px solid var(--line);
+  padding: 56px;
 }
 
-// ── Horarios ──────────────────────────────────────────
-.horarios-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .horario-icon {
-    width: 34px;
-    height: 34px;
-    background: $blue-pale;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $blue-royal;
-    font-size: 0.82rem;
-    flex-shrink: 0;
-    border: 1px solid $border;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
-
-    strong { font-size: 0.82rem; color: $text-dark; font-weight: 600; }
-    span   { font-size: 0.76rem; color: $text-light; }
-  }
+.ct-form h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1;
+  margin: 0 0 14px;
+  color: var(--ink);
 }
 
-// ── Redes sociales ────────────────────────────────────
-.redes-grid {
+.ct-form h3 em { font-style: italic; color: var(--accent); }
+
+.ct-form .sub {
+  color: var(--ink-dim);
+  margin-bottom: 42px;
+  font-size: 15px;
+  display: block;
+}
+
+// Success banner
+.success-banner {
+  border: 1px solid rgba(200,167,121,.3);
+  background: rgba(200,167,121,.05);
+  padding: 24px;
+  margin-bottom: 32px;
+
+  strong {
+    display: block;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  p { font-size: 13px; color: var(--ink-dim); margin: 0; }
+}
+
+// Fila de 2 campos
+.row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-top: 0.2rem;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.red-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 0.7rem;
-  border-radius: 9px;
-  font-size: 0.77rem;
-  font-weight: 600;
-  color: $text-medium;
-  background: $blue-pale;
-  border: 1px solid $border;
-  text-decoration: none;
-  transition: all 0.24s ease;
-
-  i { font-size: 0.95rem; color: var(--rd-color); }
-
-  &:hover {
-    background: var(--rd-color);
-    color: $white;
-    border-color: var(--rd-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-
-    i { color: $white; }
-  }
-}
-
-// ── YouTube card ──────────────────────────────────────
-.yt-card {
-  background: linear-gradient(135deg, #1a0505, #3d0000) !important;
-  border-color: rgba(255, 70, 70, 0.18) !important;
-  padding: 1.4rem !important;
-
-  &:hover {
-    box-shadow: 0 6px 28px rgba(220, 40, 40, 0.22) !important;
-  }
-}
-
-.yt-inner {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.yt-icon {
-  width: 46px;
-  height: 46px;
-  background: rgba(255, 0, 0, 0.14);
-  border-radius: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border: 1px solid rgba(255, 70, 70, 0.2);
-
-  i { font-size: 1.5rem; color: #ff4444; }
-}
-
-.yt-card h4 {
-  font-size: 0.88rem;
-  color: $white;
-  margin-bottom: 0.3rem;
-  font-family: var(--font-body);
-  font-weight: 700;
-}
-
-.yt-card p {
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 0.55rem;
-}
-
-.yt-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.78rem;
-  color: #ff8080;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s;
-
-  i { font-size: 0.65rem; }
-
-  &:hover { color: #ff4444; }
-}
-
-// ── FORM COLUMN ───────────────────────────────────────
-.form-wrapper {
-  background: $white;
-  border-radius: 20px;
-  padding: 2.75rem;
-  box-shadow: 0 2px 8px $shadow-deep, 0 12px 48px $shadow-blue;
-  border: 1px solid $border;
-
-  @media (max-width: 600px) { padding: 1.75rem 1.25rem; }
-}
-
-.form-header {
-  margin-bottom: 2.25rem;
-
-  .form-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-body);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: $blue-royal;
-    background: $blue-pale;
-    padding: 0.32rem 0.9rem;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-    border: 1px solid $border;
-
-    i { font-size: 0.75rem; }
-  }
-
-  h2 {
-    font-size: 1.8rem;
-    color: $text-dark;
-    margin-bottom: 0.45rem;
-    line-height: 1.25;
-  }
-
-  p {
-    font-size: 0.88rem;
-    color: $text-light;
-  }
-}
-
-// ── Mensaje de éxito ──────────────────────────────────
-.success-msg {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-  border: 1px solid #86efac;
-  border-radius: 13px;
-  padding: 1.25rem 1.4rem;
-  margin-bottom: 2rem;
-  animation: fadeSlideIn 0.4s ease;
-
-  .success-icon {
-    width: 42px;
-    height: 42px;
-    background: linear-gradient(135deg, #15803d, #22c55e);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-
-    i { color: $white; font-size: 1rem; }
-  }
-
-  strong { display: block; color: #15803d; margin-bottom: 0.25rem; font-size: 0.95rem; }
-  p { font-size: 0.83rem; color: #166534; }
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-// ── Campos del formulario ─────────────────────────────
-.form-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-
-  @media (max-width: 600px) { grid-template-columns: 1fr; }
-}
-
-// Floating label field
-.floating-field {
+// Campo individual — Sanctuario: label estático + input solo border-bottom
+.field {
   position: relative;
+
+  label {
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
 
   input,
   textarea {
     width: 100%;
-    padding: 1.15rem 1rem 0.55rem;
-    border: 2px solid $border-soft;
-    border-radius: 11px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: $text-dark;
-    background: $white;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color .25s;
     outline: none;
-    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-    resize: vertical;
+    border-radius: 0;
 
-    &::placeholder { color: transparent; }
-
-    &:hover { border-color: $blue-light; }
-
-    &:focus {
-      border-color: $blue-royal;
-      background: $white;
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-    }
-
-    // Float label when focused or filled
-    &:focus + label,
-    &:not(:placeholder-shown) + label {
-      top: 0.42rem;
-      font-size: 0.68rem;
-      color: $blue-royal;
-      font-weight: 600;
-      letter-spacing: 0.4px;
-    }
+    &::placeholder { color: var(--ink-mute); letter-spacing: .04em; }
+    &:focus { border-bottom-color: var(--accent); }
   }
 
   textarea {
-    padding-top: 1.4rem;
-    min-height: 130px;
-  }
-
-  label {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.88rem;
-    color: $text-light;
-    font-weight: 500;
-    pointer-events: none;
-    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, font-weight 0.2s ease;
-    background: $white;
-    padding: 0 0.2rem;
-    line-height: 1;
-
-    span { color: $blue-mid; margin-left: 1px; }
+    min-height: 120px;
+    resize: vertical;
+    padding-top: 10px;
   }
 }
 
-// Textarea: label no se centra verticalmente
-.textarea-field {
-  label {
-    top: 1.2rem;
-    transform: none;
-  }
-
-  textarea:focus + label,
-  textarea:not(:placeholder-shown) + label {
-    top: 0.42rem !important;
-    transform: none !important;
-  }
+// Fila de submit
+.submit-row {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-// ── Botón enviar ──────────────────────────────────────
-.submit-btn {
+.note {
+  font-size: 12px;
+  color: var(--ink-mute);
+  letter-spacing: .04em;
+}
+
+.btn-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  padding: 0.9rem 2.5rem;
-  background: linear-gradient(135deg, $blue-deep 0%, $blue-royal 100%);
-  color: $white;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.95rem;
-  border-radius: 11px;
+  gap: 14px;
+  padding: 18px 30px;
+  background: var(--ink);
+  color: var(--bg-deep);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .25s;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  letter-spacing: 0.3px;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.32);
+  font-family: inherit;
+  border-radius: 0;
 
-  &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #1e40af 0%, $blue-mid 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(37, 99, 235, 0.42);
-  }
-
-  &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.3);
-  }
-
-  &:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
-  }
+  &:hover:not(:disabled) { background: var(--accent); transform: translateY(-1px); }
+  &:disabled { opacity: .45; cursor: not-allowed; }
 }
 
-// Spinner animado dentro del botón
 .btn-spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  border-top-color: $white;
+  width: 14px; height: 14px;
+  border: 1.5px solid rgba(7,15,29,.25);
+  border-top-color: var(--bg-deep);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  flex-shrink: 0;
+  animation: spin .75s linear infinite;
+  display: inline-block;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Animaciones ──
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1);
+}
+.fade-up.in { opacity: 1; transform: none; }
+
+// ── Responsive ──
+@media (max-width: 1024px) {
+  .ct-wrap { grid-template-columns: 1fr; padding: 60px 24px 80px; }
+  .ct-info  { position: static; }
+}
+
+@media (max-width: 900px) {
+  .page-head { padding: 80px 24px 60px; }
+  .page-head h1 { font-size: 64px; }
+}
+
+@media (max-width: 600px) {
+  .ct-form { padding: 32px 20px; }
+  .ct-form h3 { font-size: 32px; }
+  .row { grid-template-columns: 1fr; }
+  .submit-row { flex-direction: column; align-items: flex-start; }
 }

@@ -1,18 +1,18 @@
 <nav class="navbar" [class.scrolled]="scrolled">
   <div class="nav-container">
 
-    <!-- Logo -->
+    <!-- Brand / Logo -->
     <a routerLink="/" class="nav-logo" (click)="closeMenu()">
       <div class="logo-icon">
         <i class="fas fa-cross"></i>
       </div>
       <div class="logo-text">
         <span class="logo-main">Iglesia Cristiana</span>
-        <span class="logo-sub">C.R.I</span>
+        <span class="logo-sub">C·R·I</span>
       </div>
     </a>
 
-    <!-- Links desktop -->
+    <!-- Links desktop — centro del grid -->
     <ul class="nav-links">
       <li>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
@@ -20,33 +20,27 @@
         </a>
       </li>
       <li>
-        <a routerLink="/predicas" routerLinkActive="active">
-          Prédicas
-        </a>
+        <a routerLink="/predicas" routerLinkActive="active">Prédicas</a>
       </li>
       <li>
-        <a routerLink="/nosotros" routerLinkActive="active">
-          Nosotros
-        </a>
+        <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
       </li>
       <li>
-        <a routerLink="/contacto" routerLinkActive="active">
-          Contacto
-        </a>
+        <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
       </li>
     </ul>
 
-    <!-- CTA + YouTube -->
+    <!-- CTA derecho -->
     <div class="nav-actions">
       <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
          target="_blank" rel="noopener"
          class="yt-btn">
         <i class="fab fa-youtube"></i>
-        <span>Canal YouTube</span>
+        <span>Ver Prédicas</span>
       </a>
     </div>
 
-    <!-- Hamburger -->
+    <!-- Hamburger mobile -->
     <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Menu">
       <span></span>
       <span></span>
@@ -65,7 +59,7 @@
         <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
            target="_blank" rel="noopener" class="yt-mobile"
            (click)="closeMenu()">
-          <i class="fab fa-youtube"></i> Canal YouTube
+          <i class="fab fa-youtube"></i> Ver Prédicas
         </a>
       </li>
     </ul>

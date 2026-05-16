@@ -1,172 +1,166 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="hero-badge">
+      <span class="dash"></span>
+      <span class="eyebrow-text">Iglesia Cristiana C.R.I · est. 1998</span>
+    </div>
+    <h1>Conoce<br>a Cristo.<br><em>Transforma</em><br>tu vida.</h1>
+    <p class="hero-lede">
+      Somos una comunidad de fe comprometida con proclamar el evangelio de Jesucristo,
+      discipular creyentes y llevar esperanza a cada corazón que cruce nuestro umbral.
+    </p>
+    <div class="hero-ctas">
+      <a routerLink="/predicas" class="btn-primary">
+        Explorar Prédicas <i class="fas fa-arrow-right"></i>
+      </a>
+      <a routerLink="/contacto" class="btn-link">
+        Visítanos <i class="fas fa-arrow-up-right-from-square" style="font-size:.75em"></i>
+      </a>
+    </div>
   </div>
 
-  <div class="hero-content container">
-    <div class="hero-text">
-      <span class="hero-badge">
-        <i class="fas fa-cross"></i>
-        Iglesia Cristiana C.R.I
-      </span>
-      <h1>
-        Conoce a Cristo.<br>
-        <span class="text-gold">Transforma tu vida.</span>
-      </h1>
-      <p>
-        Somos una comunidad de fe comprometida con proclamar el evangelio de Jesucristo,
-        discipular creyentes y llevar esperanza a cada corazón.
-      </p>
-      <div class="hero-actions">
-        <a routerLink="/predicas" class="btn-primary">
-          <i class="fas fa-play"></i>
-          Ver Prédicas
-        </a>
-        <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
-           target="_blank" rel="noopener" class="btn-yt">
-          <i class="fab fa-youtube"></i>
-          Canal YouTube
-        </a>
+  <div class="hero-video">
+    <a [href]="getWatchUrl(featuredVideoId)" target="_blank" rel="noopener" class="video-thumb-link">
+      <img [src]="getThumb(featuredVideoId)" alt="Prédica destacada">
+      <div class="play-overlay">
+        <div class="play-circle"><i class="fas fa-play"></i></div>
       </div>
-    </div>
-
-    <!-- Miniatura del video destacado -->
-    <div class="hero-video">
-      <a [href]="getWatchUrl(featuredVideoId)" target="_blank" rel="noopener" class="video-thumb-link">
-        <img [src]="getThumb(featuredVideoId)" alt="Prédica destacada">
-        <div class="play-overlay">
-          <div class="play-circle">
-            <i class="fab fa-youtube"></i>
-          </div>
-        </div>
-      </a>
-      <div class="video-label">
-        <i class="fas fa-fire"></i>
-        Prédica destacada · Ver en YouTube
-      </div>
+    </a>
+    <div class="video-label">
+      <div class="t">"Palabra de Poder"</div>
+      <div class="s">Prédica destacada · Ver en YouTube</div>
     </div>
   </div>
 
   <div class="hero-scroll">
-    <span></span><span></span><span></span>
+    <span><span class="dot"></span>En vivo cada domingo · 9:00 AM</span>
+    <span>I · MMXXVI</span>
   </div>
 </section>
 
 <!-- ===== STATS ===== -->
 <section class="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item" *ngFor="let s of stats">
-        <span class="stat-num">{{ s.num }}</span>
-        <span class="stat-label">{{ s.label }}</span>
-      </div>
+  <div class="stats-grid">
+    <div class="stat-item" *ngFor="let s of stats">
+      <span class="stat-num">{{ s.num }}</span>
+      <span class="stat-label">{{ s.label }}</span>
     </div>
   </div>
 </section>
 
 <!-- ===== PRÉDICAS RECIENTES ===== -->
-<section class="section predicas-section">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="section-label">Palabra de Dios</span>
-      <h2 class="section-title">Prédicas Recientes</h2>
-      <p class="section-subtitle" style="margin:0 auto">
-        Mensajes frescos y transformadores directo desde nuestro canal de YouTube
-      </p>
-    </div>
+<section class="block predicas-section">
 
-    <div class="predicas-grid">
-      <article class="predica-card" *ngFor="let p of predicas">
-        <div class="card-thumbnail">
-          <img [src]="p.thumbnail" [alt]="p.titulo" loading="lazy">
-          <div class="card-overlay">
-            <a [href]="getWatchUrl(p.videoId)" target="_blank" rel="noopener"
-               class="play-btn" [attr.aria-label]="'Ver ' + p.titulo">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-          <span class="card-categoria">{{ p.categoria }}</span>
-        </div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span><i class="fas fa-calendar-alt"></i> {{ formatDate(p.fecha) }}</span>
-            <span *ngIf="p.duracion"><i class="fas fa-clock"></i> {{ p.duracion }}</span>
-          </div>
-          <h3 class="card-title">{{ p.titulo }}</h3>
-          <p class="card-desc">{{ p.descripcion }}</p>
-          <div class="card-verse" *ngIf="p.versiculo">
-            <i class="fas fa-book-open"></i> {{ p.versiculo }}
-          </div>
-          <div class="card-tags">
-            <span class="tag" *ngFor="let tag of p.tags?.slice(0,3)">{{ tag }}</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="section-cta">
-      <a routerLink="/predicas" class="btn-primary">
-        <i class="fas fa-th-large"></i>
-        Ver todas las prédicas
-      </a>
+  <div class="section-head">
+    <h2>Prédicas<br><em>recientes</em></h2>
+    <div class="sub">
+      Mensajes frescos y transformadores. Cada semana subimos nuevos estudios bíblicos
+      y meditaciones directo desde el púlpito y la mesa de estudio.
     </div>
   </div>
-</section>
 
-<!-- ===== VALORES ===== -->
-<section class="section valores-section">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="section-label">Lo que nos mueve</span>
-      <h2 class="section-title">Nuestros Valores</h2>
-    </div>
-    <div class="valores-grid">
-      <div class="valor-card" *ngFor="let v of valores">
-        <div class="valor-icon"><i class="fas {{ v.icon }}"></i></div>
-        <h3>{{ v.titulo }}</h3>
-        <p>{{ v.desc }}</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA YOUTUBE ===== -->
-<section class="yt-cta-section">
-  <div class="container">
-    <div class="yt-cta-inner">
-      <div class="yt-cta-text">
-        <span class="section-label" style="color:#ff6b6b">Síguenos</span>
-        <h2>Suscríbete a nuestro canal</h2>
-        <p>
-          Recibe cada semana nuevas prédicas, estudios bíblicos y mensajes de edificación.
-          ¡Activa la campanita para no perderte nada!
-        </p>
-        <a href="https://www.youtube.com/@IglesiaCristianaC.R.I"
-           target="_blank" rel="noopener" class="yt-subscribe-btn">
-          <i class="fab fa-youtube"></i>
-          Suscribirse Gratis
+  <!-- Grid siempre visible — datos reales o fallback -->
+  <div class="predicas-grid">
+    <article class="predica-card" *ngFor="let p of predicas; let i = index"
+             [class.feat]="i === 0">
+      <div class="thumb">
+        <div class="img" [style.backgroundImage]="'url(' + p.thumbnail + ')'"></div>
+        <span class="cat">{{ p.categoria }}</span>
+        <a [href]="getWatchUrl(p.videoId)" target="_blank" rel="noopener"
+           class="play" (click)="$event.stopPropagation()">
+          <i class="fas fa-play"></i>
         </a>
       </div>
-      <div class="yt-cta-deco">
-        <div class="deco-circle c1"><i class="fab fa-youtube"></i></div>
-        <div class="deco-circle c2"><i class="fas fa-play"></i></div>
-        <div class="deco-circle c3"><i class="fas fa-cross"></i></div>
+      <div class="date">{{ formatDate(p.fecha) }} · {{ p.duracion }}</div>
+      <h3>{{ p.titulo }}</h3>
+      <p>{{ p.descripcion }}</p>
+      <div class="by"><b>{{ p.pastor }}</b></div>
+    </article>
+  </div>
+
+  <div class="sermons-cta">
+    <span class="count">{{ totalPredicas }}+ prédicas en el archivo</span>
+    <a routerLink="/predicas" class="btn-link">
+      Ver todas <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+</section>
+
+<!-- ===== VALORES — estático ===== -->
+<section class="valores">
+  <div class="valores-inner">
+
+    <div class="section-head">
+      <h2>Lo que<br><em>nos mueve</em></h2>
+      <div class="sub">
+        Cuatro convicciones que dan forma a nuestra vida común.
+        No son lemas, son la liturgia que respiramos.
       </div>
     </div>
+
+    <div class="valores-grid">
+      <div class="valor">
+        <span class="n">i</span>
+        <h4>Palabra</h4>
+        <p>La Escritura como norma de fe y conducta. Toda predicación, toda decisión, anclada en el texto sagrado.</p>
+      </div>
+      <div class="valor">
+        <span class="n">ii</span>
+        <h4>Oración</h4>
+        <p>Una vida de comunión constante con el Padre. El altar familiar y la vigilia comunitaria como pulso vital.</p>
+      </div>
+      <div class="valor">
+        <span class="n">iii</span>
+        <h4>Comunidad</h4>
+        <p>La iglesia como cuerpo. Hermanos que cargan, oran y celebran juntos. Sin máscaras.</p>
+      </div>
+      <div class="valor">
+        <span class="n">iv</span>
+        <h4>Misión</h4>
+        <p>Anunciar el evangelio con palabras y obras. Ir, hacer discípulos, restaurar lo quebrado.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ===== VERSÍCULO ===== -->
-<section class="verse-section">
-  <div class="container">
-    <div class="verse-card">
-      <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
-      <blockquote>
-        "Porque tanto amó Dios al mundo, que dio a su Hijo unigénito, para que todo
-        el que cree en él no se pierda, sino que tenga vida eterna."
-      </blockquote>
-      <cite>— Juan 3:16</cite>
+<section class="verse">
+  <span class="mark">"</span>
+  <blockquote>
+    De tal manera amó Dios al mundo,<br>
+    que ha dado a su Hijo unigénito,<br>
+    para que todo aquel que en él cree<br>
+    <em>no se pierda, mas tenga vida eterna.</em>
+  </blockquote>
+  <div class="ref">— Juan 3:16</div>
+</section>
+
+<!-- ===== YT CTA ===== -->
+<section class="yt-cta">
+  <div>
+    <span class="eyebrow">Síguenos</span>
+    <h3>Suscríbete a<br>nuestro canal</h3>
+    <p>
+      Recibe cada semana nuevas prédicas, estudios bíblicos y mensajes de edificación.
+      Activa la campana para no perderte ninguno.
+    </p>
+    <div class="ctas">
+      <a href="https://www.youtube.com/@IglesiaCristianaC.R.I" target="_blank" rel="noopener" class="btn-primary">
+        Suscribirse Gratis <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="https://www.youtube.com/@IglesiaCristianaC.R.I" target="_blank" rel="noopener" class="btn-link">
+        Visitar canal <i class="fas fa-arrow-up-right-from-square" style="font-size:.75em"></i>
+      </a>
+    </div>
+  </div>
+  <div class="yt-icon">
+    <div class="ring">
+      <a href="https://www.youtube.com/@IglesiaCristianaC.R.I" target="_blank" rel="noopener" class="play">
+        <i class="fas fa-play"></i>
+      </a>
     </div>
   </div>
 </section>
